@@ -34,6 +34,7 @@ float() crandom =
 W_FireAxe
 ================
 */
+void(vector org, vector vel) SpawnChunk;
 void() W_FireAxe =
 {
 	local	vector	source;
@@ -56,11 +57,7 @@ void() W_FireAxe =
 	else
 	{	// hit wall
 		sound (self, CHAN_WEAPON, "player/axhit2.wav", 1, ATTN_NORM);
-		WriteByte (MSG_BROADCAST, SVC_TEMPENTITY);
-		WriteByte (MSG_BROADCAST, TE_GUNSHOT);
-		WriteCoord (MSG_BROADCAST, org_x);
-		WriteCoord (MSG_BROADCAST, org_y);
-		WriteCoord (MSG_BROADCAST, org_z);
+		SpawnChunk(org,'0 0 0');
 	}
 };
 
@@ -357,7 +354,7 @@ void(vector org) xmasXplode =
 	//particle (org, vel*0.02, 15, 1); //white
 	//particle (org, vel*0.02, 63, 6); //green
 	//particle (org, vel*0.02, 79, 4); //red
-	while(i < 500)
+	while(i < 5)
 	{		
 		//make a direction in a mostly random direction
 		vel_x = crandom();
@@ -378,7 +375,7 @@ void(vector org) xmasXplode =
 		{ color = 79;//red
 		}
 		explo_offs = random() * 50*veln;
-		particle(org + explo_offs, vel, color,2);
+		particle(org + explo_offs, vel, color,10);
 		i = i +1;
 	}
 }
