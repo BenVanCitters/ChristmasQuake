@@ -1,7 +1,7 @@
 entity lightsController;
 
 float lightState;
-
+float lastLightStateStart;
 void() updateLightState=
 {
 	lightState = lightState +1;
@@ -10,8 +10,15 @@ void() updateLightState=
 		lightState = 0;
 	}
 }
+
 void() lightsControllerThink =
 {
+	if(lightState == lastLightStateStart )
+	{
+		updateLightState();
+		updateLightState();
+	}
+	lastLightStateStart = lightState;
 	lightsController.think = lightsControllerThink;
 	lightsController.nextthink = time + .6;
 	
@@ -52,7 +59,7 @@ void() lightsControllerThink =
 		}
 		itemx = find(itemx,  isLight, "yes");
 	}
-	updateLightState();
+	//updateLightState();
 	
 }
 
