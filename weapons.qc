@@ -431,10 +431,11 @@ void() missiledecoratorThink=
 {
 	self.think = missiledecoratorThink;
 	self.nextthink = time + 0.01;
-	if(!self.owner)
-	{	
+	if(!self.owner || self.owner.nextthink < time)
+	{
 		self.think = SUB_Remove;
 		sprint(self,"removing decorator");
+		remove(self);
 		return;
 	}
 	xmasParticleTrail(self.owner.origin - (self.owner.velocity/10),self.owner.origin,5);
@@ -482,7 +483,7 @@ void() W_FireRocket =
 	missiledecorator = spawn();
 	missiledecorator.owner = missile;
 	missiledecorator.think = missiledecoratorThink;
-	missiledecorator .nextthink = time + 0.01;
+	missiledecorator.nextthink = time + 0.01;
 	
 };
 
