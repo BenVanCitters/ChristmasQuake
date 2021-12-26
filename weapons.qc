@@ -351,9 +351,7 @@ void(vector org) xmasXplode =
 	local float rnd_val = 0;
 	local vector vel, veln;
 	local vector explo_offs;
-	//particle (org, vel*0.02, 15, 1); //white
-	//particle (org, vel*0.02, 63, 6); //green
-	//particle (org, vel*0.02, 79, 4); //red
+	
 	while(i < 5)
 	{		
 		//make a direction in a mostly random direction
@@ -419,7 +417,7 @@ void() T_MissileTouch =
 //	sound (self, CHAN_WEAPON, "weapons/r_exp3.wav", 1, ATTN_NORM);
 	self.origin = self.origin - 8*normalize(self.velocity);
 
-	xmasXplode(self.origin);
+	//xmasXplode(self.origin);
 	WriteByte (MSG_BROADCAST, SVC_TEMPENTITY);
 	WriteByte (MSG_BROADCAST, TE_EXPLOSION);
 	WriteCoord (MSG_BROADCAST, self.origin_x);
@@ -606,7 +604,7 @@ void() GrenadeExplode =
 	WriteCoord (MSG_BROADCAST, self.origin_x);
 	WriteCoord (MSG_BROADCAST, self.origin_y);
 	WriteCoord (MSG_BROADCAST, self.origin_z);
-xmasXplode(self.origin);
+//xmasXplode(self.origin);
 	BecomeExplosion ();
 };
 

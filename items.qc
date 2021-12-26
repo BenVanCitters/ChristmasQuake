@@ -33,10 +33,11 @@ PlaceItem
 plants the object on the floor
 ============
 */
+.string isLight;
 void() PlaceItem =
 {
 	local float	oldz;
-
+self.isLight = "yes";
 	self.mdl = self.model;		// so it can be restored on respawn
 	self.flags = FL_ITEM;		// make extra wide
 	self.solid = SOLID_TRIGGER;

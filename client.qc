@@ -508,6 +508,10 @@ void() snowThink =
 
 void() PutClientInServer =
 {
+		
+	//bprint ("sparning...\n");
+	spawnXMasController();
+	
 	local	entity spot;
 
 	spot = SelectSpawnPoint ();
@@ -1192,6 +1196,7 @@ called when a player connects to a server
 */
 void() ClientConnect =
 {
+
 	bprint (self.netname);
 	bprint (" entered the game\n");
 
