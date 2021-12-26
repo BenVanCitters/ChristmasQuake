@@ -1275,13 +1275,13 @@ void(entity targ, entity attacker) ClientObituary =
 
 				if (targ.weapon == 64 && targ.waterlevel > 1)
 				{
-					bprint (" discharges into the water.\n");
+					bprint (" dunks into the gluwein.\n");
 					return;
 				}
 				if (targ.weapon == IT_GRENADE_LAUNCHER)
 					bprint (" tries to put the pin back in\n");
 				else
-					bprint (" becomes bored with life\n");
+					bprint (" found the holiday spirit\n");
 				return;
 			}
 			else if ( (teamplay == 2) && (targ.team > 0)&&(targ.team == attacker.team) )
@@ -1312,50 +1312,63 @@ void(entity targ, entity attacker) ClientObituary =
 				if (rnum == IT_SHOTGUN)
 				{
 					deathstring = " chewed on ";
-					deathstring2 = "'s boomstick\n";
+					deathstring2 = "'s candycane\n";
 				}
 				if (rnum == IT_SUPER_SHOTGUN)
 				{
 					deathstring = " ate 2 loads of ";
-					deathstring2 = "'s buckshot\n";
+					deathstring2 = "'s reindeer shot\n";
 				}
 				if (rnum == IT_NAILGUN)
 				{
-					deathstring = " was nailed by ";
-					deathstring2 = "\n";
+					deathstring = " was chilled by ";
+					deathstring2 = "'s icicles\n";
 				}
 				if (rnum == IT_SUPER_NAILGUN)
 				{
-					deathstring = " was punctured by ";
-					deathstring2 = "\n";
+					deathstring = " felt ";
+					deathstring2 = "'s presents\n";
 				}
 				if (rnum == IT_GRENADE_LAUNCHER)
 				{
 					deathstring = " eats ";
-					deathstring2 = "'s pineapple\n";
+					deathstring2 = "'s sleigh bell\n";
 					if (targ.health < -40)
 					{
 						deathstring = " was gibbed by ";
-						deathstring2 = "'s grenade\n";
+						deathstring2 = "'s sleigh bell\n";
 					}
 				}
 				if (rnum == IT_ROCKET_LAUNCHER)
 				{
-					deathstring = " rides ";
-					deathstring2 = "'s rocket\n";
+					
+					if (rnum < 0.25){
+						deathstring = " choked on ";
+						deathstring2 = "'s mashed potatoes\n";
+					}
+					else if (rnum < 0.50){
+						deathstring = "'s stocking got stuffed by ";
+						deathstring2 = "\n";
+					}
+					else
+					{
+						deathstring = " rides ";
+						deathstring2 = "'s fruit cake\n";
+					}
+					
 					if (targ.health < -40)
 					{
 						deathstring = " was gibbed by ";
-						deathstring2 = "'s rocket\n" ;
+						deathstring2 = "'s cookies and milk\n" ;
 					}
 				}
 				if (rnum == IT_LIGHTNING)
 				{
-					deathstring = " accepts ";
+					deathstring = " tested ";
 					if (attacker.waterlevel > 1)
-						deathstring2 = "'s discharge\n";
+						deathstring2 = "'s eggnog\n";
 					else
-						deathstring2 = "'s shaft\n";
+						deathstring2 = "'s christmas lights\n";
 				}
 				bprint (targ.netname);
 				bprint (deathstring);
@@ -1453,11 +1466,11 @@ void(entity targ, entity attacker) ClientObituary =
 			{
 				if (targ.health < -15)
 				{
-					bprint (" burst into flames\n");
+					bprint (" burnt their tongue on the mulled wine\n");
 					return;
 				}
 				if (random() < 0.5)
-					bprint (" turned into hot slag\n");
+					bprint (" fell into the yule log\n");
 				else
 					bprint (" visits the Volcano God\n");
 				return;
@@ -1467,7 +1480,7 @@ void(entity targ, entity attacker) ClientObituary =
 			if (targ.deathtype == "falling")
 			{
 				targ.deathtype = "";
-				bprint (" fell to his death\n");
+				bprint (" slipped off the roof\n");
 				return;
 			}
 
